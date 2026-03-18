@@ -22,11 +22,11 @@ void Tilemap::SetTileSprite(const wstring& tag, int sliceSize)
 			Tile tile;
 			{
 				tile.u0 = f32(j * sliceSize) / textureX;
-				tile.v0 = f32(i * sliceSize) / textureY;
+				tile.v0 = 1.0f - f32(i * sliceSize) / textureY;
 			}
 			{
 				tile.u1 = f32((j + 1) * sliceSize) / textureX;
-				tile.v1 = f32((i + 1) * sliceSize) / textureY;
+				tile.v1 = 1.0f - f32((i + 1) * sliceSize) / textureY;
 			}
 
 			tiles[i][j] = tile;
@@ -38,12 +38,12 @@ void Tilemap::SetTileSprite(const wstring& tag, int sliceSize)
 
 void Tilemap::SetTile(i32 tx, i32 ty, i32 x, i32 y)
 {
-	f32 d = 0.5f;
+	f32 d = 0.f;
 
-	vtx.push_back({ Vector3(x     - d, y - d,    0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v0) });
-	vtx.push_back({ Vector3(x + 1 - d, y - d,    0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v0) });
-	vtx.push_back({ Vector3(x + 1 - d, y + 1 - d,0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v1) });
-	vtx.push_back({ Vector3(x     - d, y + 1 - d,0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v1) });
+	vtx.push_back({ Vector3(x    , y    , 0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v0) });
+	vtx.push_back({ Vector3(x + 1, y    , 0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v0) });
+	vtx.push_back({ Vector3(x + 1, y + 1, 0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v1) });
+	vtx.push_back({ Vector3(x    , y + 1, 0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v1) });
 
 	idx.push_back(base + 0);
 	idx.push_back(base + 1);

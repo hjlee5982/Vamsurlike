@@ -54,7 +54,8 @@ private:
 private:
 	ComPtr<ID3D11DepthStencilState> _dss;
 private:
-	ComPtr<ID3D11BlendState> _bs;
+	ComPtr<ID3D11BlendState>   _bs;
+	ComPtr<ID3D11SamplerState> _ss;
 
 	// 멀티스레딩
 public:

@@ -16,7 +16,14 @@ void Texture::CreateTexture(const wstring& path)
     }
     else
     {
-        CHECK(::LoadFromWICFile(path.c_str(), WIC_FLAGS_NONE, &md, image));
+        CHECK(::LoadFromWICFile(path.c_str(), WIC_FLAGS_FORCE_SRGB, &md, image));
+    }
+
+    DXGI_FORMAT format = md.format;
+
+    if (format == DXGI_FORMAT_R8G8B8A8_UNORM)
+    {
+        format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
     }
 
 	CHECK(::CreateShaderResourceView(DEVICE.Get(), image.GetImages(), image.GetImageCount(), md, _srv.GetAddressOf()));

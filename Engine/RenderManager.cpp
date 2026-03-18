@@ -70,7 +70,7 @@ void RenderManager::Awake()
 	ZeroMemory(&blendDesc, sizeof(blendDesc));
 	{
 		blendDesc.RenderTarget[0].BlendEnable			= TRUE;
-		blendDesc.RenderTarget[0].SrcBlend				= D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[0].SrcBlend				= D3D11_BLEND_ONE;
 		blendDesc.RenderTarget[0].DestBlend				= D3D11_BLEND_INV_SRC_ALPHA;
 		blendDesc.RenderTarget[0].BlendOp				= D3D11_BLEND_OP_ADD;
 		blendDesc.RenderTarget[0].SrcBlendAlpha			= D3D11_BLEND_ONE;
@@ -80,6 +80,21 @@ void RenderManager::Awake()
 	}
 	DEVICE->CreateBlendState(&blendDesc, _bs.GetAddressOf());
 
+	// 샘플러 스테이트 생성
+	D3D11_SAMPLER_DESC samplerDesc = {};
+	{
+		samplerDesc.Filter		   = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		samplerDesc.AddressU       = D3D11_TEXTURE_ADDRESS_WRAP;
+		samplerDesc.AddressV       = D3D11_TEXTURE_ADDRESS_WRAP;
+		samplerDesc.AddressW       = D3D11_TEXTURE_ADDRESS_WRAP;
+		samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+		samplerDesc.MinLOD         = 0;
+		samplerDesc.MaxLOD         = D3D11_FLOAT32_MAX;
+	}
+	CHECK(DEVICE->CreateSamplerState(&samplerDesc, _ss.GetAddressOf()));
+
+	// 포인트 샘플링
+	CONTEXT->PSSetSamplers(0, 1, _ss.GetAddressOf());
 
 	// 2D게임은 깊이테스트를 꺼야 추가 한 순서대로 그려짐
 	CONTEXT->OMSetDepthStencilState(_dss.Get(), 0);

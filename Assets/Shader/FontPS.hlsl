@@ -12,5 +12,5 @@ float4 main(PS_IN_UI input) : SV_TARGET
     //    color.b = 1.f;
     //}
     
-    return float4(input.color.rgb, input.color.a * color.a);
+    return color;
 }

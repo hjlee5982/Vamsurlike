@@ -36,35 +36,35 @@ void MainScene::Initialize()
 
 void MainScene::LoadResources()
 {
-	//// 배경화면
-	//{
-	//	ASSET.LoadTexture(L"Texture_BackGround", L"../Assets/Image/BackGround.png");
-	//}
-	//// 플레이어
-	//{
-	//	for (int i = 1; i <= 10; ++i)
-	//	{
-	//		ASSET.LoadTexture(L"Texture_Player_" + std::to_wstring(i), L"../Assets/Image/Player/Player_" + std::to_wstring(i) + L".png");
-	//	}
-	//}
-	//// 장애물(구름)
-	//{
-	//	ASSET.LoadTexture(L"Texture_Cloud", L"../Assets/Image/Cloud.png");
-	//}
-	//// 장애물(밧줄)
-	//{
-	//	ASSET.LoadTexture(L"Texture_Rope", L"../Assets/Image/Rope.png");
-	//}
-	//// 사운드
-	//{
-	//	SOUND.LoadSound("BGM.mp3");
-	//	SOUND.LoadSound("Jump.mp3");
-	//	SOUND.LoadSound("Effect.mp3");
-	//	SOUND.LoadSound("Crash.mp3");
-	//	SOUND.LoadSound("Open.mp3");
+	// 배경화면
+	{
+		ASSET.LoadTexture(L"Texture_BackGround", L"../Assets/Image/BackGround.png");
+	}
+	// 플레이어
+	{
+		for (int i = 1; i <= 10; ++i)
+		{
+			ASSET.LoadTexture(L"Texture_Player_" + std::to_wstring(i), L"../Assets/Image/Player/Player_" + std::to_wstring(i) + L".png");
+		}
+	}
+	// 장애물(구름)
+	{
+		ASSET.LoadTexture(L"Texture_Cloud", L"../Assets/Image/Cloud.png");
+	}
+	// 장애물(밧줄)
+	{
+		ASSET.LoadTexture(L"Texture_Rope", L"../Assets/Image/Rope.png");
+	}
+	// 사운드
+	{
+		SOUND.LoadSound("BGM.mp3");
+		SOUND.LoadSound("Jump.mp3");
+		SOUND.LoadSound("Effect.mp3");
+		SOUND.LoadSound("Crash.mp3");
+		SOUND.LoadSound("Open.mp3");
 
-	//	SOUND.PlayBGM("BGM", 0.3f);
-	//}
+		SOUND.PlayBGM("BGM", 0.3f);
+	}
 }
 
 void MainScene::SetInputSystem()

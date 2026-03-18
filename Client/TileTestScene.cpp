@@ -45,8 +45,13 @@ void TileTestScene::AddGameObject()
 		{
 			tileMap->SetTileSprite(L"Texture_Tile", 16);
 			{
-				tileMap->SetTile(0, 0, 1, 1);
-				tileMap->SetTile(0, 0, 0, 0);
+				for(i32 i = 0 ; i < 11; ++i)
+				{
+					for (i32 j = 0; j < 7; ++j)
+					{
+						tileMap->SetTile(i, j, i - 5, j - 5);	
+					}
+				}
 			}
 		}
 		auto tilemapRenderer = tile->AddComponent<TilemapRenderer>();
