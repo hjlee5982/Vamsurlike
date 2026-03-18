@@ -1,0 +1,89 @@
+{
+    "gameObjects": [
+        {
+            "components": [
+                {
+                    "data": {
+                        "_pos": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "_scale": 0.0,
+                        "owner": 1,
+                        "type": "TestTransform"
+                    }
+                },
+                {
+                    "data": {
+                        "_pov": 0.0,
+                        "owner": 1,
+                        "type": "TestCamera"
+                    }
+                }
+            ],
+            "id": 1,
+            "name": "Camera"
+        },
+        {
+            "components": [
+                {
+                    "data": {
+                        "_pos": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "_scale": 0.0,
+                        "owner": 2,
+                        "type": "TestTransform"
+                    }
+                },
+                {
+                    "data": {
+                        "_position": {
+                            "x": 0.0,
+                            "y": 2.0,
+                            "z": 0.0
+                        },
+                        "_speed": 3.0,
+                        "owner": 2,
+                        "type": "TestController"
+                    }
+                }
+            ],
+            "id": 2,
+            "name": "Player"
+        },
+        {
+            "components": [
+                {
+                    "data": {
+                        "_pos": {
+                            "x": 11.0,
+                            "y": 22.0,
+                            "z": 33.0
+                        },
+                        "_scale": 0.0,
+                        "owner": 3,
+                        "type": "TestTransform"
+                    }
+                },
+                {
+                    "data": {
+                        "_circleColliderValue": 0,
+                        "colliderSize": 77.0,
+                        "desc": {
+                            "a": 5,
+                            "b": 8.0
+                        },
+                        "owner": 3,
+                        "type": "TestCircleCollider"
+                    }
+                }
+            ],
+            "id": 3,
+            "name": "Go"
+        }
+    ]
+}

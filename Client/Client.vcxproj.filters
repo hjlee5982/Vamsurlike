@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="01. Header">
+      <UniqueIdentifier>{b3fe7b53-b937-494a-a9b5-a87182dc3d14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Script">
+      <UniqueIdentifier>{7171b6df-f320-4b47-afe4-ed0f940074cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{92c5b793-e3bb-4a5a-bddd-4f93c53540e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Script\Global">
+      <UniqueIdentifier>{7d33a71d-98e2-42fc-ba34-bbe1aaba77cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Script\UI">
+      <UniqueIdentifier>{73818efc-e4a5-4033-a1c3-f8b409b0cde8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Script\GameObject">
+      <UniqueIdentifier>{388cdf9d-83e1-4f47-89d0-4e44456d0186}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>03. Script\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundController.h">
+      <Filter>03. Script\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>03. Script\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectGenerator.h">
+      <Filter>03. Script\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>03. Script\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Score.h">
+      <Filter>03. Script\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Checker.h">
+      <Filter>03. Script\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>03. Script\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="TileTestScene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundController.cpp">
+      <Filter>03. Script\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>03. Script\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectGenerator.cpp">
+      <Filter>03. Script\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>03. Script\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Score.cpp">
+      <Filter>03. Script\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Checker.cpp">
+      <Filter>03. Script\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>03. Script\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="TileTestScene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

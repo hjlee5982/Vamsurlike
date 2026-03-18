@@ -1,0 +1,58 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+!fmod.dll
+!fmodL.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+!assimp-vc143-mt.lib
+!assimp-vc143-mtd.lib
+!DirectXTex.lib
+!DirectXTex_debug.lib
+!Effects11.lib
+!Effects11d.lib
+!fmod_vc.lib
+!fmodL_vc.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# PreHeader
+*.ipch
+
+-----------Custom----------
+# Folders
+
+.vs/
+
+Bin/*
+!Bin/
+!Bin/fmod.dll
+!Bin/fmodL.dll
+
+Intermediate
+

@@ -1,0 +1,159 @@
+{
+    "gameObjects": [
+        {
+            "components": [],
+            "id": 1,
+            "name": "MainCamera"
+        },
+        {
+            "components": [],
+            "id": 2,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 3,
+            "name": "TopBoundary"
+        },
+        {
+            "components": [],
+            "id": 4,
+            "name": "BtmBoundary"
+        },
+        {
+            "components": [],
+            "id": 5,
+            "name": "ObstacleGenerator"
+        },
+        {
+            "components": [],
+            "id": 6,
+            "name": "Player"
+        },
+        {
+            "components": [],
+            "id": 7,
+            "name": "ScoreUI"
+        },
+        {
+            "components": [],
+            "id": 8,
+            "name": "TitleUI"
+        },
+        {
+            "components": [],
+            "id": 9,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 10,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 11,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 12,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 13,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 14,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 15,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 16,
+            "name": "GameManager"
+        },
+        {
+            "components": [],
+            "id": 1,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 1,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 2,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 1,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 2,
+            "name": "Cloud"
+        },
+        {
+            "components": [],
+            "id": 3,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 4,
+            "name": "Cloud"
+        },
+        {
+            "components": [],
+            "id": 5,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 6,
+            "name": "Cloud"
+        },
+        {
+            "components": [],
+            "id": 7,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 8,
+            "name": "Cloud"
+        },
+        {
+            "components": [],
+            "id": 9,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 10,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 11,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 12,
+            "name": "none"
+        }
+    ]
+}

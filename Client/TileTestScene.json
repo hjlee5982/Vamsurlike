@@ -1,0 +1,19 @@
+{
+    "gameObjects": [
+        {
+            "components": [],
+            "id": 1,
+            "name": "none"
+        },
+        {
+            "components": [],
+            "id": 1,
+            "name": "MainCamera"
+        },
+        {
+            "components": [],
+            "id": 2,
+            "name": "UICamera"
+        }
+    ]
+}
