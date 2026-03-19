@@ -8,9 +8,10 @@ enum class InputState
 	Up
 };
 
-
 struct InputAction
 {
+	bool isValue = false;
+
 	string name;
 	List<int> keys;
 	InputState state = InputState::None;
@@ -18,6 +19,11 @@ struct InputAction
 	std::function<void()> started;
 	std::function<void()> performed;
 	std::function<void()> canceled;
+
+	Vector2 value = { 0, 0 };
+	std::function<Vector2()> valueGetter;
+
+	std::function<void(Vector2)> performedValue;
 };
 
 
@@ -30,6 +36,16 @@ public:
 		{
 			action.name = name;
 			action.keys = keys;
+		}
+		_actions.push_back(action);
+	}
+	void AddAction(const string& name, std::function<Vector2()> getter)
+	{
+		InputAction action;
+		{
+			action.name        = name;
+			action.isValue     = true;
+			action.valueGetter = getter;
 		}
 		_actions.push_back(action);
 	}
@@ -61,11 +77,23 @@ public:
 	{
 		InputMap map;
 		{
-			map.AddAction("Console", { 'Q', VK_F1});
+			map.AddAction("Start", { 'R' });
+			map.AddAction("Jump", { 'E', VK_SPACE });
+
+			map.AddAction("Move", []()
+				{
+					Vector2 v = { 0, 0 };
+
+					if (GetAsyncKeyState('A') & 0x8000) v.x -= 1;
+					if (GetAsyncKeyState('D') & 0x8000) v.x += 1;
+					if (GetAsyncKeyState('W') & 0x8000) v.y += 1;
+					if (GetAsyncKeyState('S') & 0x8000) v.y -= 1;
+
+					return v;
+				});
 		}
-		INPUT.AddMap(map);
+		AddMap(map);
 	}
-public:
 	InputAction* FindAction(const string& name)
 	{
 		for (auto& map : _maps)
@@ -115,6 +143,21 @@ public:
 		{
 			for (auto& action : map.GetActions())
 			{
+				if (action.isValue)
+				{
+					action.value = action.valueGetter();
+
+					if (action.performedValue)
+					{
+						if (action.value.x != 0 || action.value.y != 0)
+						{
+							action.value.Normalize();
+							action.performedValue(action.value);
+						}
+						continue;
+					}
+				}
+
 				InputState newState = InputState::None;
 
 				for (int key : action.keys)

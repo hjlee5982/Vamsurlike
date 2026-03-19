@@ -83,7 +83,6 @@ void PlayerController::OnCollisionEnter2D(sptr<Collider> collider)
 
 void PlayerController::Jump()
 {
-
 	if (_isStart == false)
 	{
 		return;

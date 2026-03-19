@@ -11,6 +11,7 @@ class GameObject;
 class UIComponent;
 class SpriteRenderPass;
 class TilemapRenderPass;
+class DebugObjectRenderPass;
 class DebugColliderRenderPass;
 class UIRenderPass;
 class DebugUIRenderPass;
@@ -25,23 +26,28 @@ public:
 private:
 	void RenderSprite();
 	void RenderTilemap();
+	void RenderDbgObject();
 	void RenderCollider();
 	void RenderUI();
 	void RenderDebugUI();
 public:
 	void AddRenderer(sptr<Renderer> renderer);
+	void AddDbgRenderer(sptr<Renderer> dbgRenderer);
 	void AddCollider(sptr<Collider> collider);
 	void AddUI(sptr<UIComponent> ui);
 public:
 	bool colliderRendering = false;
 	bool debugUIRendering  = false;
+	bool pointSampling     = false;
 private:
 	List<wptr<Renderer>>    _renderers;
+	List<wptr<Renderer>>    _dbgRenderers;
 	List<wptr<Collider>>    _colliders;
 	List<wptr<UIComponent>> _uis;
 private:
 	sptr<SpriteRenderPass>        _spritePass;
 	sptr<TilemapRenderPass>		  _tilemapPass;
+	sptr<DebugObjectRenderPass>   _debugObjectPass;
 	sptr<DebugColliderRenderPass> _debugColliderPass;
 	sptr<UIRenderPass>            _uiPass;
 	sptr<DebugUIRenderPass>       _debugUIPass;

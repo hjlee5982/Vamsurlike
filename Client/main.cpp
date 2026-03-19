@@ -21,11 +21,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	{
 		option.hInstance  = hInstance;
 		option.vsync      = false;
-		option.clearColor = Color(Colors::Blue);
+		option.clearColor = Color(0.062f, 0.062f, 0.062f, 1.f);
 
 		option.appName  = L"Vamsurlike";
 		option.width    = 1920;
-		option.height   = 1090;
+		option.height   = 1080;
 		option.windowed = false;
 	}
 	Global::ClientOption = option;

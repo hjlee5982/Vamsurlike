@@ -13,6 +13,7 @@ class Tilemap : public Component
 public:
 	void SetTileSprite(const wstring& tag, int sliceSize);
 	void SetTile(i32 tx, i32 ty, i32 x, i32 y);
+	void SetTile(const wstring& path);
 public:
 	sptr<class Texture> _texture;
 	List<List<Tile>>    _tiles;

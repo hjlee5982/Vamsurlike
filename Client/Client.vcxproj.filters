@@ -19,6 +19,9 @@
     <Filter Include="03. Script\GameObject">
       <UniqueIdentifier>{388cdf9d-83e1-4f47-89d0-4e44456d0186}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Script\Test">
+      <UniqueIdentifier>{4a7c2251-57ad-4d30-9c39-7f54a3ce9b40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,6 +57,9 @@
     <ClInclude Include="TileTestScene.h">
       <Filter>02. Scene</Filter>
     </ClInclude>
+    <ClInclude Include="TestController.h">
+      <Filter>03. Script\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -86,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="TileTestScene.cpp">
       <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TestController.cpp">
+      <Filter>03. Script\Test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

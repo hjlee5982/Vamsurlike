@@ -94,6 +94,16 @@ void AssetManager::CreateDefaultMesh()
 
 void AssetManager::CreateDefaultTexture()
 {
+	// 기본 흰색 네모 텍스쳐
+	{
+		sptr<Texture> texture = makeSptr<Texture>();
+		{
+			texture->CreateTexture(engineAssetPath + L"Image/Square.png");
+			texture->_tag = L"Texture_Square";
+			texture->_path = engineAssetPath + L"Image/Square.png";
+		}
+		Add(L"Texture_Square", texture);
+	}
 	// 스프라이트 렌더러 디폴트 텍스쳐
 	{
 		sptr<Texture> texture = makeSptr<Texture>();

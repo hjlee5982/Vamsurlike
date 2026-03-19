@@ -19,6 +19,7 @@ class Renderer : public Component
 {
 public:
 	virtual void CollectRenderData(struct RenderContext& ctx) = 0;
+	virtual void CollectDbgRenderData(struct RenderContext& ctx) {}
 public:
 	sptr<TMeshBase> GetMesh();
 	sptr<Material>  GetMaterial();

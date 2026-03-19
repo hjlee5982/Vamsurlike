@@ -12,7 +12,7 @@ public:
 	Collider();
 public:
 	virtual bool CheckCollision(const sptr<Collider>& target) = 0;
-	virtual void CollectRenderData(struct RenderContext& ctx) = 0;
+	virtual void CollectDbgRenderData(struct RenderContext& ctx) = 0;
 public:
 	sptr<TMeshBase> GetMesh()      { return _mesh; }
 	sptr<Material>  GetMaterial()  { return _material; }

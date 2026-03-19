@@ -58,7 +58,7 @@ bool BoxCollider2D::CheckCollision(const sptr<Collider>& target)
 	}
 }
 
-void BoxCollider2D::CollectRenderData(RenderContext& ctx)
+void BoxCollider2D::CollectDbgRenderData(RenderContext& ctx)
 {
 	DebugColliderRenderCommand cmd;
 	{

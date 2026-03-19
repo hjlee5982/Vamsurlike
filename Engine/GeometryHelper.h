@@ -22,7 +22,7 @@ public:
 	static void CreateSphere(sptr<Geometry<VertexTextureData>>  geometry);
 	static void CreateSphere(sptr<Geometry<VertexUIData>>       geometry);
 public:
-	static void CreateGrid(sptr<Geometry<VertexColliderData>> geometry, int size = 5);
-	static void CreateGrid(sptr<Geometry<VertexTextureData>>  geometry, int size = 5);
-	static void CreateGrid(sptr<Geometry<VertexUIData>>       geometry, int size = 5);
+	static void CreateGrid(sptr<Geometry<VertexColliderData>> geometry, int size = 101);
+	static void CreateGrid(sptr<Geometry<VertexTextureData>>  geometry, int size = 101);
+	static void CreateGrid(sptr<Geometry<VertexUIData>>       geometry, int size = 101);
 };

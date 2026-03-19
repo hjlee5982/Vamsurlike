@@ -16,6 +16,14 @@ struct TilemapRenderCommand
 	i32				      OrderInLayer;
 };
 
+struct DebugObjectRenderCommand
+{
+	Matrix				  WorldMatrix;
+	sptr<class TMeshBase> Mesh;
+	sptr<class Material>  Material;
+	i32				      OrderInLayer;
+};
+
 struct DebugColliderRenderCommand
 {
 	Matrix				  WorldMatrix;
@@ -44,15 +52,18 @@ struct RenderContext
 {
 	List<SpriteRenderCommand>        spriteCmds;
 	List<TilemapRenderCommand>		 tilemapCmds;
+	List<DebugObjectRenderCommand>   debugObjectCmds;
 	List<DebugColliderRenderCommand> debugColliderCmds;
 	List<UIRenderCommand>            uiCmds;
 	List<DebugUIRenderCommand>       debugUICmds;
 
 	void Clear()
 	{
-		spriteCmds		 .clear();
-		debugColliderCmds.clear();
-		uiCmds			 .clear();
-		debugUICmds		 .clear();
+		spriteCmds			.clear();
+		tilemapCmds			.clear();
+		debugObjectCmds		.clear();
+		debugColliderCmds	.clear();
+		uiCmds				.clear();
+		debugUICmds			.clear();
 	}
 };

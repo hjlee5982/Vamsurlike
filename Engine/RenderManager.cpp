@@ -84,16 +84,15 @@ void RenderManager::Awake()
 	D3D11_SAMPLER_DESC samplerDesc = {};
 	{
 		samplerDesc.Filter		   = D3D11_FILTER_MIN_MAG_MIP_POINT;
-		samplerDesc.AddressU       = D3D11_TEXTURE_ADDRESS_WRAP;
-		samplerDesc.AddressV       = D3D11_TEXTURE_ADDRESS_WRAP;
-		samplerDesc.AddressW       = D3D11_TEXTURE_ADDRESS_WRAP;
+		samplerDesc.AddressU       = D3D11_TEXTURE_ADDRESS_CLAMP;
+		samplerDesc.AddressV       = D3D11_TEXTURE_ADDRESS_CLAMP;
+		samplerDesc.AddressW       = D3D11_TEXTURE_ADDRESS_CLAMP;
 		samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
 		samplerDesc.MinLOD         = 0;
 		samplerDesc.MaxLOD         = D3D11_FLOAT32_MAX;
 	}
 	CHECK(DEVICE->CreateSamplerState(&samplerDesc, _ss.GetAddressOf()));
 
-	// 포인트 샘플링
 	CONTEXT->PSSetSamplers(0, 1, _ss.GetAddressOf());
 
 	// 2D게임은 깊이테스트를 꺼야 추가 한 순서대로 그려짐
@@ -106,6 +105,7 @@ void RenderManager::Awake()
 	// 렌더 패스 생성
 	_spritePass        = makeSptr<SpriteRenderPass>();
 	_tilemapPass	   = makeSptr<TilemapRenderPass>();
+	_debugObjectPass   = makeSptr<DebugObjectRenderPass>();
 	_debugColliderPass = makeSptr<DebugColliderRenderPass>();
 	_uiPass            = makeSptr<UIRenderPass>();
 	_debugUIPass       = makeSptr<DebugUIRenderPass>();
@@ -116,10 +116,10 @@ void RenderManager::Awake()
 
 void RenderManager::CollectRenderData()
 {
-	// 오브젝트 렌더링 데이터 수집
 	auto& ctx = _ctx[_write];
 	ctx.Clear();
 	
+	// 오브젝트 렌더링 데이터 수집
 	for (auto& wRenderer : _renderers)
 	{
 		if (auto renderer = wRenderer.lock())
@@ -131,6 +131,18 @@ void RenderManager::CollectRenderData()
 		}
 	}
 
+	// 디버깅 오브젝트 렌더링 데이터 수집
+	for (auto& wRenderer : _dbgRenderers)
+	{
+		if (auto renderer = wRenderer.lock())
+		{
+			if (renderer->Owner()->isActive == true)
+			{
+				renderer->CollectDbgRenderData(ctx);
+			}
+		}
+	}
+
 	// 콜라이더 렌더링 데이터 수집
 	for (auto& wCollider : _colliders)
 	{
@@ -138,7 +150,7 @@ void RenderManager::CollectRenderData()
 		{
 			if (collider->Owner()->isActive == true)
 			{
-				collider->CollectRenderData(ctx);
+				collider->CollectDbgRenderData(ctx);
 			}
 		}
 	}
@@ -169,11 +181,13 @@ void RenderManager::RenderGameObject()
 		CONTEXT->UpdateSubresource(_cbPerFrame.Get(), 0, nullptr, &perFrameData, 0, 0);
 		CONTEXT->VSSetConstantBuffers(0, 1, _cbPerFrame.GetAddressOf());
 
-		RenderSprite();
 		RenderTilemap();
+		RenderSprite();
+
 
 		if (colliderRendering == true)
 		{
+			RenderDbgObject();
 			RenderCollider();
 		}
 	}
@@ -205,6 +219,17 @@ void RenderManager::RenderSprite()
 void RenderManager::RenderTilemap()
 {
 	_tilemapPass->Bind(_ctx[_read]);
+}
+
+void RenderManager::RenderDbgObject()
+{
+	CONTEXT->RSSetState(_wireFrameRS.Get());
+	CONTEXT->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+
+	_debugObjectPass->Bind(_ctx[_read]);
+
+	CONTEXT->RSSetState(_defaultRS.Get());
+	CONTEXT->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 }
 
 void RenderManager::RenderCollider()
@@ -252,6 +277,11 @@ void RenderManager::RenderDebugUI()
 void RenderManager::AddRenderer(sptr<Renderer> renderer)
 {
 	_renderers.push_back(renderer);
+}
+
+void RenderManager::AddDbgRenderer(sptr<Renderer> dbgRenderer)
+{
+	_dbgRenderers.push_back(dbgRenderer);
 }
 
 void RenderManager::AddCollider(sptr<Collider> collider)

@@ -38,12 +38,10 @@ void Tilemap::SetTileSprite(const wstring& tag, int sliceSize)
 
 void Tilemap::SetTile(i32 tx, i32 ty, i32 x, i32 y)
 {
-	f32 d = 0.f;
-
-	vtx.push_back({ Vector3(x    , y    , 0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v0) });
-	vtx.push_back({ Vector3(x + 1, y    , 0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v0) });
-	vtx.push_back({ Vector3(x + 1, y + 1, 0), Vector2(_tiles[ty][tx].u1, _tiles[ty][tx].v1) });
-	vtx.push_back({ Vector3(x    , y + 1, 0), Vector2(_tiles[ty][tx].u0, _tiles[ty][tx].v1) });
+	vtx.push_back({ Vector3(x     , y     , 0), Vector2(_tiles[ty][tx].u0 , _tiles[ty][tx].v0 ) });
+	vtx.push_back({ Vector3(x + 1 , y     , 0), Vector2(_tiles[ty][tx].u1 , _tiles[ty][tx].v0 ) });
+	vtx.push_back({ Vector3(x + 1 , y + 1 , 0), Vector2(_tiles[ty][tx].u1 , _tiles[ty][tx].v1 ) });
+	vtx.push_back({ Vector3(x     , y + 1 , 0), Vector2(_tiles[ty][tx].u0 , _tiles[ty][tx].v1 ) });
 
 	idx.push_back(base + 0);
 	idx.push_back(base + 1);
@@ -53,4 +51,53 @@ void Tilemap::SetTile(i32 tx, i32 ty, i32 x, i32 y)
 	idx.push_back(base + 3);
 
 	base += 4;
+}
+
+void Tilemap::SetTile(const wstring& path)
+{
+	std::ifstream file(path);
+	List<string> lines;
+
+	if (!file.is_open())
+	{
+		int a = 0;
+	}
+
+	string line;
+
+	while (std::getline(file, line))
+	{
+		if (line.empty())
+		{
+			continue;
+		}
+
+		std::stringstream ss(line);
+		string token;
+
+		while (std::getline(ss, token, '\t'))
+		{
+			if (token.empty())
+			{
+				continue;
+			}
+
+			if (token.front() == '"')
+			{
+				token.erase(0, 1);
+			}
+			if (token.back() == '"')
+			{
+				token.pop_back();
+			}
+
+			std::stringstream ts(token);
+
+			i32 tx, ty, x, y;
+			char comma;
+
+			ts >> tx >> comma >> ty >> comma >> x >> comma >> y;
+			SetTile(tx, ty, x, y);
+		}
+	}
 }

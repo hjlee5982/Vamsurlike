@@ -46,7 +46,7 @@ bool CircleCollider2D::CheckCollision(const sptr<Collider>& target)
 	}
 }
 
-void CircleCollider2D::CollectRenderData(RenderContext& ctx)
+void CircleCollider2D::CollectDbgRenderData(RenderContext& ctx)
 {
 }
 

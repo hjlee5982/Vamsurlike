@@ -69,12 +69,7 @@ void MainScene::LoadResources()
 
 void MainScene::SetInputSystem()
 {
-	InputMap map;
-	{
-		map.AddAction("Start", { 'R'});
-		map.AddAction("Jump", { 'E', VK_SPACE});
-	}
-	INPUT.AddMap(map);
+
 }
 
 void MainScene::AddGameObject()

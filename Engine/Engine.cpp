@@ -80,9 +80,9 @@ void Engine::EngineInitialize()
 	DIRECTX .Awake();
 	ASSET   .Awake();
 	FONT	.Awake();
-	RENDERER.Awake();
 	SOUND   .Awake();
 	SCENE   .Awake();
+	RENDERER.Awake();
 }
 
 void Engine::UpdateMultiThread()

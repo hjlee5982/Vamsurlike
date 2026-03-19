@@ -9,6 +9,10 @@
 #include "BoxCollider2D.h"
 #include "Tilemap.h"
 #include "TilemapRenderer.h"
+#include "InputSystem.h"
+
+#include "TestController.h"
+
 
 void TileTestScene::Initialize()
 {
@@ -44,19 +48,77 @@ void TileTestScene::AddGameObject()
 		auto tileMap = tile->AddComponent<Tilemap>();
 		{
 			tileMap->SetTileSprite(L"Texture_Tile", 16);
+
+			i32 width  = 32;
+			i32 height = 18;
+
+			i32 left  = (width * -1) / 2;
+			i32 right = (left * -1) - 1;
+			i32 top   = (height / 2) - 1;
+			i32 btm   = (top * -1) -1;
+
+			// ¸ðÅüÀÌ
 			{
-				for(i32 i = 0 ; i < 11; ++i)
+				tileMap->SetTile(0, 6, left, top);
+				tileMap->SetTile(2, 6, right, top);
+				tileMap->SetTile(0, 4, left, btm);
+				tileMap->SetTile(2, 4, right, btm);
+			}
+			// »óÇÏ
+			{
+				for (i32 i = left + 1; i < right; ++i)
 				{
-					for (i32 j = 0; j < 7; ++j)
+					tileMap->SetTile(1, 6, i, top);
+					tileMap->SetTile(1, 4, i, btm);
+				}
+			}
+			// ÁÂ¿ì
+			{
+				for (i32 i = btm + 1; i < top; ++i)
+				{
+					tileMap->SetTile(0, 5, left, i);
+					tileMap->SetTile(2, 5, right, i);
+				}
+			}
+			// ³»ºÎ
+			{
+				for (i32 i = left + 1; i < right; ++i)
+				{
+					for (i32 j = btm + 1; j < top; ++j)
 					{
-						tileMap->SetTile(i, j, i - 5, j - 5);	
+						if (RANDOM.Range(1, 10) >= 9)
+						{
+							tileMap->SetTile(RANDOM.Range(0, 5), RANDOM.Range(0, 1), i, j);
+						}
+						else
+						{
+							tileMap->SetTile(1, 5, i, j);
+						}
 					}
 				}
 			}
 		}
 		auto tilemapRenderer = tile->AddComponent<TilemapRenderer>();
 		{
+			tilemapRenderer->Grid = false;
 			tilemapRenderer->SetTilemap(tileMap);
+		}
+	}
+
+	auto player = Instantiate();
+	{
+		auto t = player->AddComponent<Transform>();
+		{
+			t->SetScale(Vector3(2.f, 2.f, 2.f));
+			t->SetPosition(Vector3(0.f, 0.f, 0.f));
+		}
+		player->AddComponent<SpriteRenderer>();
+		{
+
+		}
+		player->AddComponent<TestController>();
+		{
+
 		}
 	}
 }
@@ -64,4 +126,5 @@ void TileTestScene::AddGameObject()
 void TileTestScene::EngineSetting()
 {
 	RENDERER.colliderRendering = true;
+	RENDERER.pointSampling     = true;
 }

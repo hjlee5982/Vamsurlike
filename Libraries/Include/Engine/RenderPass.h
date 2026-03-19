@@ -26,6 +26,13 @@ public:
 };
 
 
+class DebugObjectRenderPass : public IRenderPass
+{
+public:
+	virtual void Bind(struct RenderContext& ctx) override;
+};
+
+
 class DebugColliderRenderPass : public IRenderPass
 {
 public:

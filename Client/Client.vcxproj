@@ -147,6 +147,7 @@
     <ClInclude Include="ObjectGenerator.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="TestController.h" />
     <ClInclude Include="TileTestScene.h" />
     <ClInclude Include="UI_Score.h" />
   </ItemGroup>
@@ -163,6 +164,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="TestController.cpp" />
     <ClCompile Include="TileTestScene.cpp" />
     <ClCompile Include="UI_Score.cpp" />
   </ItemGroup>
